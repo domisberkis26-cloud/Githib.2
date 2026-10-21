@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitClone — Fictional Demo</title>
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0d1117;
+  --panel: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --muted: #9198a1;
+  --orange: #ffb454;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 system-ui, sans-serif;
+}
+.warning {
+  background: #ffb454;
+  color: #241500;
+  padding: 16px;
+  text-align: center;
+  font-weight: 800;
+  border-bottom: 3px solid #ff7b00;
+}
+.warning p { margin: 4px 0 0; font-weight: 600; }
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 5%;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+.logo { font-size: 21px; font-weight: 800; }
+.logo span { color: var(--orange); }
+.demo-label {
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  border-radius: 20px;
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: bold;
+}
+main { max-width: 1050px; margin: 30px auto; padding: 0 18px; }
+.breadcrumb { color: #58a6ff; font-size: 18px; overflow-wrap: anywhere; }
+.breadcrumb strong { color: var(--text); }
+.description { color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 9px; margin: 20px 0; }
+button, input {
+  font: inherit;
+  border-radius: 6px;
+}
+button {
+  cursor: pointer;
+  padding: 8px 13px;
+  background: #21262d;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+button:hover { border-color: #8b949e; }
+button.primary { background: #238636; border-color: #238636; }
+button:focus-visible, input:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 2px;
+}
+.stats { color: var(--muted); margin: 14px 0; }
+.layout { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(220px, 1fr); gap: 18px; }
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  min-width: 0;
+}
+.panel-title { padding: 12px 15px; background: var(--panel); font-weight: 700; }
+.file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-top: 1px solid var(--border);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.file:hover { background: #161b22; }
+.file .name { color: #58a6ff; flex: 1; }
+.file .message { color: var(--muted); font-size: 12px; }
+.readme { padding: 20px; }
+.readme h2 { border-bottom: 1px solid var(--border); padding-bottom: 9px; }
+.readme code { background: #262c36; padding: 3px 6px; border-radius: 4px; }
+.side { padding: 15px; }
+.side h3 { margin-top: 0; }
+.muted { color: var(--muted); }
+input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 9px;
+  color: var(--text);
+  width: 100%;
+}
+footer { text-align: center; padding: 25px; color: var(--muted); }
+#notice {
+  margin-top: 12px;
+  color: var(--orange);
+  overflow-wrap: anywhere;
+}
+@media (max-width: 650px) {
+  .layout { grid-template-columns: 1fr; }
+  header { padding: 14px; }
+  main { margin-top: 20px; }
+  .file .message { display: none; }
+}
+</style>
+</head>
+<body><div class="warning" role="alert">
+  ⚠️ WARNING: THIS IS NOT THE REAL GITHUB!
+  <p>This is a fictional demo website. Please exit immediately if you intended to visit GitHub.</p>
+</div><header>
+  <div class="logo">⑂ <span>GitClone</span></div>
+  <span class="demo-label">FICTIONAL DEMO</span>
+  <span class="muted">Explore a pretend code repository</span>
+</header><main>
+  <div class="breadcrumb">demo-user <strong>/ demo-project</strong></div>
+  <p class="description">A fictional repository for exploring this GitHub-inspired interface.</p>  <div class="actions">
+    <button id="star">☆ Star <span id="stars">12</span></button>
+    <button id="watch">◉ Watch</button>
+    <button id="fork">⑂ Fork</button>
+    <button class="primary" id="clone">Code ▾</button>
+  </div>  <div id="notice" aria-live="polite"></div>
+  <div class="stats">● Public demo · Main branch · Example files only</div>  <div class="layout">
+    <section>
+      <div class="panel">
+        <div class="panel-title">📁 Files</div>
+        <div class="file" data-file="README.md">
+          <span>📄</span><span class="name">README.md</span>
+          <span class="message">Update project info</span>
+        </div>
+        <div class="file" data-file="index.html">
+          <span>🌐</span><span class="name">index.html</span>
+          <span class="message">Add homepage</span>
+        </div>
+        <div class="file" data-file="style.css">
+          <span>🎨</span><span class="name">style.css</span>
+          <span class="message">Style demo</span>
+        </div>
+        <div class="file" data-file="script.js">
+          <span>⚙️</span><span class="name">script.js</span>
+          <span class="message">Add interactions</span>
+        </div>
+        <div class="file" data-file="LICENSE">
+          <span>📜</span><span class="name">LICENSE</span>
+          <span class="message">Example license</span>
+        </div>
+      </div>  <div class="panel">
+    <div class="panel-title" id="readme-title">📖 README.md</div>
+    <div class="readme" id="readme-content">
+      <h2>Welcome to GitClone Demo!</h2>
+      <p>This is a fictional code repository interface built with HTML, CSS and JavaScript.</p>
+      <p>It does not connect to GitHub, create real repositories, or store real projects.</p>
+      <h3>Features</h3>
+      <ul>
+        <li>Clickable example files</li>
+        <li>Interactive demo buttons</li>
+        <li>Responsive layout for phones and computers</li>
+      </ul>
+      <p><code>Demo mode: enabled</code></p>
+    </div>
+  </div>
+</section>
+
+<aside>
+  <div class="panel">
+    <div class="side">
+      <h3>About</h3>
+      <p>A pretend project for learning how code-hosting websites look.</p>
+      <p class="muted">🌐 Website: fictional demo</p>
+      <p class="muted">🟠 Not affiliated with GitHub</p>
+      <hr style="border-color:var(--border)">
+      <h3>Topics</h3>
+      <p><span class="demo-label">html</span>
+         <span class="demo-label">css</span></p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="side">
+      <h3>Find a demo file</h3>
+      <input id="search" type="search" placeholder="Search example files..." aria-label="Search files">
+      <p class="muted" id="search-count">5 example files</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="side">
+      <h3>Demo information</h3>
+      <p class="muted">Stars: <span id="side-stars">12</span></p>
+      <p class="muted">Forks: <span id="forks">3</span></p>
+      <p class="muted">Issues: Example only</p>
+    </div>
+  </div>
+</aside>
+
+  </div>
+</main><footer>
+  GitClone is a fictional interface demo. Not GitHub. No real accounts or repositories.
+</footer><script>
+const notice = document.getElementById('notice');
+
+document.getElementById('star').addEventListener('click', () => {
+  const stars = document.getElementById('stars');
+  const sideStars = document.getElementById('side-stars');
+  const next = Number(stars.textContent) + 1;
+  stars.textContent = next;
+  sideStars.textContent = next;
+  notice.textContent = 'Demo: You starred this pretend repository.';
+});
+
+document.getElementById('watch').addEventListener('click', () => {
+  notice.textContent = 'Demo: You are now watching this example repository.';
+});
+
+document.getElementById('fork').addEventListener('click', () => {
+  const forks = document.getElementById('forks');
+  forks.textContent = Number(forks.textContent) + 1;
+  notice.textContent = 'Demo: Pretend fork created. No real repository was made.';
+});
+
+document.getElementById('clone').addEventListener('click', () => {
+  notice.textContent = 'Demo only: cloning is disabled because this project is not connected to Git.';
+});
+
+const examples = {
+  'README.md': '<h2>README.md</h2><p>This is a fictional README file.</p>',
+  'index.html': '<h2>index.html</h2><p>HTML defines the structure of a website.</p><p><code>&lt;h1&gt;Hello world!&lt;/h1&gt;</code></p>',
+  'style.css': '<h2>style.css</h2><p>CSS controls the appearance of a website.</p><p><code>body { font-family: sans-serif; }</code></p>',
+  'script.js': '<h2>script.js</h2><p>JavaScript makes websites interactive.</p><p><code>console.log("Hello!");</code></p>',
+  'LICENSE': '<h2>LICENSE</h2><p>This is an example file, not a real license. Add a suitable license to your own projects.</p>'
+};
+
+document.querySelectorAll('.file').forEach(file => {
+  file.addEventListener('click', () => {
+    const name = file.dataset.file;
+    document.getElementById('readme-title').textContent = '📄 ' + name;
+    document.getElementById('readme-content').innerHTML = examples[name];
+    notice.textContent = 'Showing fictional file: ' + name;
+  });
+});
+
+document.getElementById('search').addEventListener('input', event => {
+  const query = event.target.value.toLowerCase();
+  let visible = 0;
+
+  document.querySelectorAll('.file').forEach(file => {
+    const matches = file.dataset.file.toLowerCase().includes(query);
+    file.style.display = matches ? 'flex' : 'none';
+    if (matches) visible++;
+  });
+
+  document.getElementById('search-count').textContent =
+    visible + ' example file' + (visible === 1 ? '' : 's');
+});
+</script></body>
+</html>
